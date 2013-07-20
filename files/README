@@ -1,0 +1,3 @@
+Your files should go in this folder. I prefer to use the same folder structure as the target system, but this may not work for you if you're using multiple architectures.
+
+The etc/apt/sources.list.d/newrelic.list file is here as an example, it is not maintained.
