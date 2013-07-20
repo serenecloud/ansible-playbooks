@@ -1,0 +1,10 @@
+---
+# Run apt-get update and apt-get upgrade on hosts
+- hosts: us:uk:au:nz:home
+  user: ansible
+  sudo: yes
+  tasks:
+    - name: get latest packages
+      action: apt update_cache=yes
+    - name: install latest packages
+      action: apt upgrade=safe
