@@ -1,0 +1,20 @@
+---
+# Add the newrelic repository and repo key to apt, then install the newrelic system monitor and put your license key in the config
+# Requires you to put the file in the files/etc/newrelic/ directory
+- hosts: us
+  user: ansible
+  sudo: yes
+  tasks:
+    - name: add newrelic repo to apt sources
+      action: copy src=files/etc/apt/sources.list.d/newrelic.list dest=/etc/apt/sources.list.d/newrelic.list
+    - name: add newrelic key to the apt repo
+      action: apt_key url=http://download.newrelic.com/548C16BF.gpg state=present
+    - name: update package list
+      action: apt update_cache=yes
+    - name: ensure newrelic-sysmond is installed
+      action: apt pkg=newrelic-sysmond state=present
+    - name: update newrelic nrsysmond.cfg with license key
+      action: copy src=files/etc/newrelic/nrsysmond.cfg dest=/etc/newrelic/nrsysmond.cfg
+    - name: ensure proper permissions on nrsysmond.cfg file
+      action: file path=/etc/newrelic/nrsysmond.cfg mode=0640 owner=root group=root
+
