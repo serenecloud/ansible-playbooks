@@ -19,6 +19,10 @@
       action: apt pkg=fail2ban state=present
     - name: ensure pwgen is installed
       action: apt pkg=pwgen state=present
+    - name: ensure ntp is installed
+      action: apt pkg=ntp state=present
+    - name: start ntp
+      service: name=ntp state=started
 - hosts: us:uk:au:nz
   user: ansible
   sudo: yes
