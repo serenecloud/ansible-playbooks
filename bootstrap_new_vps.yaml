@@ -27,6 +27,8 @@
   user: ansible
   sudo: yes
   tasks:
+    - name: ensure sendmail is installed
+      action: apt pkg=sendmail state=present
     - name: ensure sendmail-bin is installed
       action: apt pkg=sendmail-bin state=present
     - name: ensure bsd-mailx is not installed
