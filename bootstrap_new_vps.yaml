@@ -31,7 +31,6 @@
       with_items:
         - sendmail
         - sendmail-bin
-        - mailx
         - bsd-mailx
         - heirloom-mailx
 
