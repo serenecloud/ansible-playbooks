@@ -1,7 +1,7 @@
 ---
 # Add the newrelic repository and repo key to apt, then install the newrelic system monitor and put your license key in the config
 # Requires you to put the file in the files/etc/newrelic/ directory
-- hosts: us
+- hosts: all
   user: ansible
   sudo: yes
   tasks:
