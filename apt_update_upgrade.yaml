@@ -1,6 +1,6 @@
 ---
 # Run apt-get update and apt-get upgrade on hosts
-- hosts: us:uk:au:nz:home
+- hosts: us:au:nz:home
   user: ansible
   sudo: yes
   tasks:
