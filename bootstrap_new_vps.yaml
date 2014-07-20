@@ -7,31 +7,31 @@
   tasks:
     - name: get latest packages
       action: apt update_cache=yes
-    - name: ensure vim is installed
-      action: apt pkg=vim state=present
-    - name: ensure wget is installed
-      action: apt pkg=wget state=present
-    - name: ensure curl is installed
-      action: apt pkg=curl state=present
-    - name: ensure uptimed is installed
-      action: apt pkg=uptimed state=present
-    - name: ensure fail2ban is installed
-      action: apt pkg=fail2ban state=present
-    - name: ensure pwgen is installed
-      action: apt pkg=pwgen state=present
-    - name: ensure ntp is installed
-      action: apt pkg=ntp state=present
+      
+    - name: Install software
+      apt: pkg={{ item }} state=installed
+      with_items:
+        - vim
+        - wget
+        - curl
+        - uptimed
+        - fail2ban
+        - pwgen
+        - ntp
+      
     - name: start ntp
       service: name=ntp state=started
+      
 - hosts: us:uk:au:nz
   user: ansible
   sudo: yes
   tasks:
-    - name: ensure sendmail is installed
-      action: apt pkg=sendmail state=present
-    - name: ensure sendmail-bin is installed
-      action: apt pkg=sendmail-bin state=present
-    - name: ensure bsd-mailx is not installed
-      action: apt pkg=bsd-mailx state=absent
-    - name: ensure heirloom-mailx is installed
-      action: apt pkg=heirloom-mailx state=present
+    - name: Install software
+      apt: pkg={{ item }} state=installed
+      with_items:
+        - sendmail
+        - sendmail-bin
+        - mailx
+        - bsd-mailx
+        - heirloom-mailx
+
